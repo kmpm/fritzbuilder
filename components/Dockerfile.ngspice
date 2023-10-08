@@ -21,4 +21,20 @@ RUN set -xe \
 
 RUN set -xe \
     && cd ngspice-40 \
-    && make -j${NPROC}
+    && make -j${NPROC} 
+
+RUN set -xe \
+    && sudo mkdir -p /deb \
+    && cd ngspice-40 \
+    && sudo checkinstall \
+        --install=no \
+        --default \
+        --nodoc \
+        --pkgname=ngspice \
+        --pkgversion=40 \
+        --pkgrelease=fritzing1 \
+        --pkglicense=BSD \
+        --pkggroup=electronics \
+        --pakdir /deb \
+        -D make install 
+    

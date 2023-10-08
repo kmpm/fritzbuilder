@@ -48,5 +48,5 @@ docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build kmpm/fritz
 
 
 ### ngspice
-
+- https://ngspice.sourceforge.io/
 - compile flags - https://forums.raspberrypi.com/viewtopic.php?t=288404

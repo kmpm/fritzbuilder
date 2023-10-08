@@ -12,3 +12,16 @@ RUN set -xe \
     && cmake -D QUAZIP_QT_MAJOR_VERSION=5 .. \
     && cmake --build . -- -j${NPROC}
 
+RUN set -xe \
+    && sudo mkdir -p /deb \
+    && cd quazip_qt5/build \
+    && sudo checkinstall \
+        --install=no \
+        --default \
+        --nodoc \
+        --pkgname=libquazip5 \
+        --pkgversion=${QUAZIP_VERSION} \
+        --pkgrelease=fritzing1 \
+        --pkglicense=LGPL \
+        --pakdir /deb \
+        -D make install 

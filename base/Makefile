@@ -9,6 +9,8 @@ IMAGES := $(patsubst Dockerfile.%,%.built,$(DOCKERFILES))
 
 all: build
 
+base: build
+
 build: $(IMAGES)
 	@echo "images=$(IMAGES)"
 

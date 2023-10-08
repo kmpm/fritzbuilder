@@ -20,7 +20,8 @@ RUN apt-get -qq update \
 RUN ${APT_INSTALL} \
     git \
     build-essential \
-    cmake 
+    cmake \
+    checkinstall
 
 
 # fritzing guestimated dependencies
