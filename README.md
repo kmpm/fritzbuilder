@@ -1,17 +1,21 @@
 # Fritzing Build container for Raspberry PI
+This is very much a work in progress. 
+It will most likely __not work at all__ as long as this warning exists.
 
 ```shell
-docker build -t fritzbuild .
+clone http://github.com/kmpm/fritzbuild
+clone https://github.com/fritzing/fritzing-app
 
+# create the docker images
+cd fritzbuild
+make
+
+# build fritzing using the images
 cd ../fritzing-app
 
-
 docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build fritzbuild qmake ../phoenix.pro
-docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build fritzbuild make -j16
+docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build fritzbuild make -j2
 ```
-./configure --with-x --enable-xspice --enable-cider --with-readline=yes --enable-openmp --disable-debug CFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -O2" LDFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -s"
-
-
 
 
 ## Resources

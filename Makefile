@@ -12,22 +12,21 @@ usage:
 
 .PHONY: $(TOPTARGETS) $(SUBDIRS)
 $(TOPTARGETS): $(SUBDIRS)
-$(SUBDIRS): base.built
-        $(MAKE) -C $@ $(MAKECMDGOALS)
+$(SUBDIRS): 
+	$(MAKE) -C $@ $(MAKECMDGOALS)
+
+.PHONY: all
+all: build
 
 build: base.built
 
-base.built:
+
+base.built: Dockerfile.base
 	@echo "Building base image"
-	docker build -t $(BASE_IMAGE) ./base
+	docker build -t $(BASE_NAME)-base -f Dockerfile.base .
 	touch base.built
 
-# ngspice: base.built
-# 	docker build -t $(BASE_NAME)-ngspice -f components/Dockerfile.ngspice ./components
 
-
-# libgit2: base.built
-# 	docker build -t $(BASE_NAME)-libgit2 -f components/Dockerfile.libgit2 ./components
 
 clean:
 	rm -f *.built

@@ -8,7 +8,7 @@ RUN set -xe \
 
 ARG CFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -O2" 
 ARG LDFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -s"
-
+ARG NPROC=2
 
 RUN set -xe \
     && cd ngspice-40 \ 
@@ -18,3 +18,7 @@ RUN set -xe \
         --enable-xspice --enable-cider --enable-openmp \
         --disable-debug \
         CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+
+RUN set -xe \
+    && cd ngspice-40 \
+    && make -j${NPROC}

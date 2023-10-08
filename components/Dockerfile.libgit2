@@ -1,4 +1,4 @@
-FROM kmpm/fritzbuild:base
+FROM kmpm/fritzbuild-base:latest
 
 
 ENV LIBGIT2_VERSION=0.28.1
@@ -10,6 +10,5 @@ RUN set -xe \
     && mkdir libgit2/build \
     && cd libgit2/build \
     && cmake -D BUILD_SHARED_LIBS=OFF .. \
-    && cmake --build . -- -j4 \
-    && cd ../../
+    && cmake --build . -- -j4 
 
