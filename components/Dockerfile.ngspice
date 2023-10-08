@@ -1,0 +1,20 @@
+FROM kmpm/fritzbuild-base:latest
+
+
+RUN set -xe \
+    && git clone --single-branch -b ngspice-40 https://git.code.sf.net/p/ngspice/ngspice ngspice-40 \
+    && cd ngspice-40 \
+    && chmod +x compile_linux.sh 
+
+ARG CFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -O2" 
+ARG LDFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -s"
+
+
+RUN set -xe \
+    && cd ngspice-40 \ 
+    && ./autogen.sh \
+    && ./configure \
+        --with-x --with-readline=yes \
+        --enable-xspice --enable-cider --enable-openmp \
+        --disable-debug \
+        CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"

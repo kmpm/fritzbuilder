@@ -1,0 +1,15 @@
+FROM kmpm/fritzbuild:base
+
+
+ENV LIBGIT2_VERSION=0.28.1
+
+
+RUN set -xe \
+    && wget -q -O - https://github.com/libgit2/libgit2/archive/v${LIBGIT2_VERSION}.tar.gz | tar xz \
+    && mv libgit2-${LIBGIT2_VERSION} libgit2 \
+    && mkdir libgit2/build \
+    && cd libgit2/build \
+    && cmake -D BUILD_SHARED_LIBS=OFF .. \
+    && cmake --build . -- -j4 \
+    && cd ../../
+
