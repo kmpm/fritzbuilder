@@ -1,0 +1,14 @@
+FROM kmpm/fritzbuild-base:latest
+
+
+ARG QUAZIP_VERSION=1.4
+ARG NPROC=2
+
+RUN set -xe \
+    && wget -q -O - https://github.com/stachenov/quazip/archive/refs/tags/v${QUAZIP_VERSION}.tar.gz | tar xz \
+    && mv quazip-${QUAZIP_VERSION} quazip_qt5 \
+    && mkdir quazip_qt5/build \
+    && cd quazip_qt5/build \
+    && cmake -D QUAZIP_QT_MAJOR_VERSION=5 .. \
+    && cmake --build . -- -j${NPROC}
+

@@ -1,9 +1,8 @@
 
 BASE_NAME = "kmpm/fritzbuild"
 
-
 TOPTARGETS := all build clean
-SUBDIRS := components
+SUBDIRS := base components
 
 
 usage:
@@ -15,16 +14,11 @@ $(TOPTARGETS): $(SUBDIRS)
 $(SUBDIRS): 
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: all
+
 all: build
 
-build: base.built
-
-
-base.built: Dockerfile.base
-	@echo "Building base image"
-	docker build -t $(BASE_NAME)-base -f Dockerfile.base .
-	touch base.built
+build:
+	docker build -t $(BASE_NAME):latest -f Dockerfile .
 
 
 

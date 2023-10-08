@@ -14,8 +14,8 @@ RUN set -xe \
     && cd ngspice-40 \ 
     && ./autogen.sh \
     && ./configure \
-        --with-x --with-readline=yes \
-        --enable-xspice --enable-cider --enable-openmp \
+        --with-x --with-readline=yes --with-ngshared \
+        --enable-xspice --enable-cider --enable-openmp --enable-osdi \
         --disable-debug \
         CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 
