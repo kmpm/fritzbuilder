@@ -1,0 +1,18 @@
+services:
+  qt6:
+    build:
+      context: .
+      dockerfile: Dockerfile.qt6
+    volumes:
+      - ./root/qt:/qt
+    # environment:
+    #   - QT6_MODULE_PATH=/qt6
+    #   - QT6_MODULE_NAME=qtbase
+    #   - QT6_MODULE_BRANCH=6.0
+    #   - QT6_MODULE_REPOSITORY=https://code.qt.io/qt/qtbase.git
+    #   - QT6_MODULE_REVISION=HEAD
+    #   - QT6_MODULE_EXTRA_CMAKE_ARGS=-DQT_FEATURE_qt6-buildtests=ON
+    command: /bin/bash
+    tty: true
+    stdin_open: true
+
