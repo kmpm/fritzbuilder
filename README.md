@@ -46,7 +46,16 @@ docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build kmpm/fritz
 - https://github.com/fritzing/fritzing-app/blob/develop/docker/Dockerfile.bionic
 - https://github.com/conan-io/conan-docker-tools/blob/master/modern/base/Dockerfile
 
+- https://github.com/kuflierl/Flatpak-org.fritzing.Fritzing/blob/main/org.fritzing.Fritzing.json
+
+
+- https://gist.github.com/goodarzi/b41cc3d9879429f731d7620b5f2fa8a2
+- https://www.tal.org/tutorials/building-qt-65-raspberry-pi-raspberry-pi-os
+
 
 ### ngspice
 - https://ngspice.sourceforge.io/
 - compile flags - https://forums.raspberrypi.com/viewtopic.php?t=288404
+
+
+

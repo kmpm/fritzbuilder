@@ -6,20 +6,20 @@ ARG NPROC=2
 
 RUN set -xe \
     && wget -q -O - https://github.com/stachenov/quazip/archive/refs/tags/v${QUAZIP_VERSION}.tar.gz | tar xz \
-    && mv quazip-${QUAZIP_VERSION} quazip_qt5 \
-    && mkdir quazip_qt5/build \
-    && cd quazip_qt5/build \
-    && cmake -D QUAZIP_QT_MAJOR_VERSION=5 .. \
-    && cmake --build . -- -j${NPROC}
+    && mv quazip-${QUAZIP_VERSION} quazip_qt6 \
+    && mkdir quazip_qt6/build \
+    && cd quazip_qt6/build \
+    && cmake -D QUAZIP_QT_MAJOR_VERSION=6 .. \
+    && cmake --build . -- -j2
 
 RUN set -xe \
     && sudo mkdir -p /deb \
-    && cd quazip_qt5/build \
+    && cd quazip_qt6/build \
     && sudo checkinstall \
         --install=no \
         --default \
         --nodoc \
-        --pkgname=libquazip5 \
+        --pkgname=libquazip6 \
         --pkgversion=${QUAZIP_VERSION} \
         --pkgrelease=fritzing1 \
         --pkglicense=LGPL \

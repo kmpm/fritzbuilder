@@ -8,7 +8,7 @@ RUN set -xe \
 
 ARG CFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -O2" 
 ARG LDFLAGS="-march=armv8-a+crc -mcpu=cortex-a72 -s"
-ARG NPROC=2
+# ARG NPROC=2
 
 RUN set -xe \
     && cd ngspice-40 \ 
@@ -21,7 +21,7 @@ RUN set -xe \
 
 RUN set -xe \
     && cd ngspice-40 \
-    && make -j${NPROC} 
+    && make -j2 
 
 RUN set -xe \
     && sudo mkdir -p /deb \

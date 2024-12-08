@@ -15,6 +15,7 @@ usage:
 
 
 .PHONY: $(TOPTARGETS) $(SUBDIRS)
+
 $(TOPTARGETS): $(SUBDIRS)
 $(SUBDIRS): 
 	$(MAKE) -C $@ $(MAKECMDGOALS)
@@ -30,3 +31,7 @@ dump:
 
 clean:
 	rm -f *.built
+
+
+qmake: 
+	cd ../fritzing-app && docker run --rm -it -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build kmpm/fritzbuild qmake ../phoenix.pro
