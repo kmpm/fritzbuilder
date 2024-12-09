@@ -4,7 +4,8 @@ export DEBIAN_FRONTEND=noninteractive
 
 APT_INSTALL="apt-get -qq install -y --no-install-recommends --no-install-suggests -o=Dpkg::Use-Pty=0"
 
-if [ ! -f ]; then
+if [ ! -f "/etc/apt/sources.list.d/bookworm-backports.list" ]; then
+     # libgl4es-dev requires backportsq
     echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/bookworm-backports.list
 fi
 
@@ -62,7 +63,7 @@ ${APT_INSTALL} \
     libvulkan-dev \
     libvulkan-dev vulkan-tools
     
-    # libgl4es-dev 
+   
 
 # cleanup
 apt-get clean \
