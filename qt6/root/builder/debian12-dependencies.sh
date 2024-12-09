@@ -4,6 +4,10 @@ export DEBIAN_FRONTEND=noninteractive
 
 APT_INSTALL="apt-get -qq install -y --no-install-recommends --no-install-suggests -o=Dpkg::Use-Pty=0"
 
+if [ ! -f ]; then
+    echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/bookworm-backports.list
+fi
+
 echo "Updating package list"
 apt-get -qq update
 
@@ -15,10 +19,12 @@ ${APT_INSTALL} \
     gperf bison flex libcups2-dev \
     libatspi2.0-dev \
     libdbus-1-dev \
+    libclang-dev \
     libfontconfig-dev \
     libfontconfig1-dev \
     libfreetype-dev \
     libfreetype6-dev \
+    libgl4es-dev \
     libglib2.0-dev \
     libice-dev \
     libicu-dev \

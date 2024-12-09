@@ -1,10 +1,11 @@
 services:
-  qt6:
+  qtbuilder:
     build:
       context: .
       dockerfile: Dockerfile.qt6
     volumes:
-      - ./root/qt:/qt
+      - ./data:/qt
+      - ./root/builder:/builder
     # environment:
     #   - QT6_MODULE_PATH=/qt6
     #   - QT6_MODULE_NAME=qtbase
