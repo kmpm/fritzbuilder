@@ -40,16 +40,22 @@ get_untar () {
 checkinst () {
     local pkgname=$1
     echo "checkinst ${pkgname}"
-    sudo checkinstall \
-        --install=yes \
+    checkinstall \
+        --install=no \
         --default \
         --nodoc \
+        --inspect \
         --pkgname=${pkgname} \
         --pkgversion=${QT_VERSION} \
         --pkgrelease=fritzing1 \
         --pkglicense=GPL \
         --pakdir /qt/deb \
         -D cmake --install . 
+}
+
+first () {
+    # get the first part of a dash-separated string
+    echo $1 | cut -d'-' -f1
 }
 
 
@@ -70,7 +76,8 @@ do_base () {
         -DQT_AVOID_CMAKE_ARCHIVING_API=ON \
         ../
     cmake --build . --parallel -j ${JOBS}
-    # checkinst ${modulename}
+    local name=$(first ${modulename})
+    checkinst qt6-${name}
     cmake --install .
 }
 
@@ -86,15 +93,11 @@ do_submodule () {
     cd ${SRCDIR}/${modulename}/build
     $PREFIX/bin/qt-configure-module ..
     cmake --build . --parallel -j ${JOBS}
-    # checkinst ${modulename}
+    checkinst qt6-${name}
     cmake --install .
 }
 
 
-first () {
-    # get the first part of a dash-separated string
-    echo $1 | cut -d'-' -f1
-}
 
 do_base 
 
