@@ -38,6 +38,24 @@ docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build kmpm/fritz
 docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build kmpm/fritzbuild make -j2
 ```
 
+## Increase swap space 
+
+Depending on RAM size you might need alot. More than 16GB is likely.
+
+```shell
+# disable swap
+sudo dphys-swapfile swapoff
+
+# edit config with suitable settings
+sudo nano /etc/dphys-swapfile
+
+# initialize swap with new settings
+sudo dphys-swapfile setup
+
+# enable swap again
+sudo dphys-swapfile swapon
+
+```
 
 ## Resources
 
@@ -48,14 +66,10 @@ docker run -v "$(pwd):/home/bob/fritzing" -w /home/bob/fritzing/build kmpm/fritz
 
 - https://github.com/kuflierl/Flatpak-org.fritzing.Fritzing/blob/main/org.fritzing.Fritzing.json
 
-
 - https://gist.github.com/goodarzi/b41cc3d9879429f731d7620b5f2fa8a2
 - https://www.tal.org/tutorials/building-qt-65-raspberry-pi-raspberry-pi-os
 
-
 ### ngspice
+
 - https://ngspice.sourceforge.io/
 - compile flags - https://forums.raspberrypi.com/viewtopic.php?t=288404
-
-
-
