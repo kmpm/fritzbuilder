@@ -9,7 +9,7 @@ QT_MINOR_VERSION=6.5
 
 SRCDIR=/qt/build
 JOBS=4
-PREFIX=/usr/local/Qt-${QT_VERSION}
+PREFIX=/qt/Qt-${QT_VERSION}
 
 if [ ! -d "${SRCDIR}" ]; then
     mkdir -p ${SRCDIR}
@@ -112,11 +112,11 @@ export PATH="$PREFIX/bin:$PATH"
 # #source ~/.profile
 
 do_submodule qt5compat
-# do_submodule qtpositioning
-# do_submodule qttools
-# do_submodule qtsvg
+do_submodule qtserialport
+do_submodule qtpositioning
+do_submodule qttools
+do_submodule qtsvg
 # do_submodule qttranslations
-# do_submodule qtserialport
 # do_submodule qtscxml
 # do_submodule qtcharts
 # do_submodule qtwayland
