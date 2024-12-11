@@ -80,7 +80,7 @@ do_base () {
         ../
     cmake --build . --parallel -j ${JOBS}
     local name=$(first ${modulename})
-    checkinst qt6-${name}
+    # checkinst qt6-${name}
     cmake --install .
 }
 
@@ -97,7 +97,7 @@ do_submodule () {
     cd ${SRCDIR}/${modulename}/build
     $PREFIX/bin/qt-configure-module ..
     cmake --build . --parallel -j ${JOBS}
-    checkinst qt6-${name}
+    # checkinst qt6-${name}
     cmake --install .
 }
 
