@@ -18,6 +18,9 @@ fi
 
 cd ${SRCDIR}
 
+clean () {
+    rm -rf $1/build
+}
 
 get_untar () {
     local modulename=$1
@@ -44,7 +47,6 @@ checkinst () {
         --install=no \
         --default \
         --nodoc \
-        --inspect \
         --pkgname=${pkgname} \
         --pkgversion=${QT_VERSION} \
         --pkgrelease=fritzing1 \
@@ -63,6 +65,7 @@ do_base () {
     local modulename=qtbase-everywhere-src-${QT_VERSION}
     cd ${SRCDIR}
     get_untar ${modulename}
+    #clean ${modulename}
     if [ ! -d ${modulename}/build ]; then
         mkdir ${modulename}/build
     fi
@@ -87,6 +90,7 @@ do_submodule () {
     local modulename=${name}-${arch}-src-${QT_VERSION}
     cd ${SRCDIR}
     get_untar ${modulename}
+    #clean ${modulename}
     if [ ! -d ${modulename}/build ]; then
         mkdir ${modulename}/build
     fi
@@ -101,15 +105,18 @@ do_submodule () {
 
 do_base 
 
+
+# pick up the new path for the next steps
+export PATH="$PREFIX/bin:$PATH"
 # #echo "export PATH=/usr/local/Qt-$QT_VERSION/bin:\$PATH" >> ~/.profile
 # #source ~/.profile
 
 do_submodule qt5compat
-do_submodule qtpositioning
-do_submodule qttools
-do_submodule qtsvg
-do_submodule qttranslations
-do_submodule qtserialport
-do_submodule qtscxml
+# do_submodule qtpositioning
+# do_submodule qttools
+# do_submodule qtsvg
+# do_submodule qttranslations
+# do_submodule qtserialport
+# do_submodule qtscxml
 # do_submodule qtcharts
 # do_submodule qtwayland

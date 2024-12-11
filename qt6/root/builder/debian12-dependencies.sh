@@ -21,11 +21,15 @@ ${APT_INSTALL} \
     libatspi2.0-dev \
     libdbus-1-dev \
     libclang-dev \
+    libdrm-dev \
     libfontconfig-dev \
     libfontconfig1-dev \
     libfreetype-dev \
     libfreetype6-dev \
+    libgl-image-display-dev \
+    libgl1-mesa-dev \
     libgl4es-dev \
+    libglbinding-dev \
     libglib2.0-dev \
     libice-dev \
     libicu-dev \
@@ -36,6 +40,8 @@ ${APT_INSTALL} \
     libsm-dev \
     libssl-dev \
     libsqlite3-dev \
+    libvulkan-dev \
+    libvulkan-dev vulkan-tools \
     libx11-dev \
     libx11-xcb-dev \
     libxcb-cursor-dev \
@@ -55,13 +61,7 @@ ${APT_INSTALL} \
     libxext-dev \
     libxkbcommon-dev \
     libxkbcommon-x11-dev \
-    libdrm-dev \
-    libgl-image-display-dev \
-    libgl1-mesa-dev \
-    libglbinding-dev \
-    libinput-dev libts-dev \
-    libvulkan-dev \
-    libvulkan-dev vulkan-tools
+    libzstd-dev
     
    
 

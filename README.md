@@ -66,6 +66,7 @@ sudo dphys-swapfile swapon
 
 - https://github.com/kuflierl/Flatpak-org.fritzing.Fritzing/blob/main/org.fritzing.Fritzing.json
 
+- https://download.qt.io/official_releases/qt/6.5/6.5.3/submodules/
 - https://gist.github.com/goodarzi/b41cc3d9879429f731d7620b5f2fa8a2
 - https://www.tal.org/tutorials/building-qt-65-raspberry-pi-raspberry-pi-os
 
